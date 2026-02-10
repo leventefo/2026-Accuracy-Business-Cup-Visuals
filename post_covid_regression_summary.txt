@@ -1,0 +1,23 @@
+                       OLS Regression Results                       
+Dep. Variable:   ,ALTSALES YoY Change,  R-squared:         ,   0.819
+Model:           ,OLS                ,  Adj. R-squared:    ,   0.804
+Method:          ,Least Squares      ,  F-statistic:       ,   54.19
+Date:            ,Wed, 04 Feb 2026   ,  Prob (F-statistic):,3.28e-17
+Time:            ,22:12:55           ,  Log-Likelihood:    ,  80.010
+No. Observations:,    53             ,  AIC:               ,  -150.0
+Df Residuals:    ,    48             ,  BIC:               ,  -140.2
+Df Model:        ,     4             ,                     ,        
+Covariance Type: ,nonrobust          ,                     ,        
+                       ,   coef   , std err ,    t    ,P>|t| ,  [0.025 ,  0.975] 
+const                  ,    0.0362,    0.068,    0.532, 0.597,   -0.101,    0.173
+New vehicle price (YoY),   -1.3839,    0.531,   -2.606, 0.012,   -2.452,   -0.316
+Real income (YoY)      ,    0.3063,    0.207,    1.481, 0.145,   -0.109,    0.722
+Policy rate            ,   -0.0006,    0.014,   -0.043, 0.966,   -0.029,    0.028
+GSCPI (YoY)            ,   -0.0417,    0.007,   -5.688, 0.000,   -0.056,   -0.027
+Omnibus:      , 1.562,  Durbin-Watson:     ,   1.511
+Prob(Omnibus):, 0.458,  Jarque-Bera (JB):  ,   0.800
+Skew:         , 0.033,  Prob(JB):          ,   0.670
+Kurtosis:     , 3.598,  Cond. No.          ,    296.
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

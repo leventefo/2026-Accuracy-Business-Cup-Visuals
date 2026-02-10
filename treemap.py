@@ -27,8 +27,6 @@ def touch_up(fig):
     fig.update_layout(plot_bgcolor = "#F3F4F6")
 
 
-
-
 def convert_to_percentage_contribution(df):
     divisor = df.iloc[43,3]
     update_lst = []
@@ -37,7 +35,6 @@ def convert_to_percentage_contribution(df):
     df["YTD_2025_units"] = update_lst
 
     #print(df["YTD_2025_units"])
-
 
 def plot(df, fig):
     #values = list(range())
@@ -54,8 +51,6 @@ def plot(df, fig):
                                            colorbar = dict(title = "", orientation = "h"))))
     
 
-
-
 def main():
     df = pd.read_csv("tree_map_data.csv")
     fig = create_figure("YTD Market Share %")
@@ -63,7 +58,7 @@ def main():
     df.to_csv("percents.csv")
     plot(df, fig)
     touch_up(fig)
-    #fig.show(renderer = "browser")
+    fig.show(renderer = "browser")
     #fig.write_image("Tree_map.png", width = 950, height = 800, scale = 6)
     
 

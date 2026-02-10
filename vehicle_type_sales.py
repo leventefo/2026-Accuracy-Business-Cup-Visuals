@@ -96,7 +96,7 @@ def convert_to_percentage_contribution(df):
 
 def touch_up(fig):
     
-    fig.update_layout(margin=dict(t=100, b=80, l=90, r=80))
+    fig.update_layout(margin=dict(t=60, b=80, l=90, r=80))
     fig.update_layout(font_family = "Georgia", font_weight = 600, font_size = 16)
     fig.update_yaxes(title_text = "% Share", row = 1, col = 1)
     fig.update_yaxes(title_text = "", row = 1, col = 2)
@@ -132,7 +132,7 @@ def main():
                                                              ]]
     
     #print(df_automotive_trends_pivot)
-    fig = create_figure("Light Weight Vehicle Mix")
+    fig = create_figure("")
     plot_bar(df_automotive_trends_pivot, fig, ["Truck SUV", 
                                                              "Sedan/Wagon", 
                                                              "Pickup",
@@ -153,7 +153,7 @@ def main():
     
     touch_up(fig)
     
-    fig.write_image("Light_weight_vehicle_mix.png", width = 1460, height = 600, scale = 6)
+    fig.write_image("Light_weight_vehicle_mix2.png", width = 1460, height = 600, scale = 6)
     
     
     
