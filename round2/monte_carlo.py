@@ -1,4 +1,6 @@
 import plotly.graph_objects as go
+import plotly.express as px
+from itertools import cycle
 import pandas as pd
 import numpy as np
 
@@ -10,7 +12,7 @@ class World:
         self.volume = np.random.triangular(2e6, 3e6, 4e6)
         self.max_variable_saving = np.random.triangular(150, 350, 600)
         self.scale_speed = np.random.triangular(1.5, 3, 5)
-        self.pass_through = np.random.triangular(0.5, 0.7, 0.85)
+        self.pass_through = np.random.triangular(0.4, 0.6, 0.7)
         significant_market_share_indicator = 0.40
         transition_sharpness = 40
         reference_share = 0.04
@@ -49,32 +51,44 @@ class World:
 
 class Plot:
 
-    def __init__(self, market_share_values):
-        self.market_share_values = market_share_values
-        self.data = [World() for i in range(300)]
-        self.create_figure(fig_title = "Monte Carlo", yaxis_title = "A-segment vehicle price (€)", xaxis_title= "Joint Venture Market Share (%)")
-
+    def __init__(self):
+        self.x_data = [100/2e3*i for i in range(2001)]
+        self.y_data = [World() for i in range(300)]
+        self.y_data = [element.price_array for element in self.y_data]    
+        self.create_figure(fig_title = "", yaxis_title = "A-segment vehicle price (€)", xaxis_title= "Joint Venture Market Share (%)")
 
     def create_figure(self, fig_title, yaxis_title, xaxis_title):
         fig = go.Figure().update_layout(template ="plotly_white", title = fig_title, title_x = 0.5, title_y = 0.94, title_font_weight = 600)
-        fig.update_layout(width = 1000, height = 800)
-        fig.update_yaxes(tickprefix = " ", title = yaxis_title)
-        fig.update_xaxes(title = xaxis_title)
-    
-    
+        fig.update_layout(width = 1000, height = 500)
+        fig.update_layout(font_family = "Georgia", font_weight = 600, font_size = 18)
+        fig.update_layout(paper_bgcolor = "#F3F4F6")
+        fig.update_layout(plot_bgcolor = "#F3F4F6")
+        fig.update_yaxes(ticksuffix = " ", title = yaxis_title, range = [0,20000], title_standoff = 20)
+        fig.update_layout(margin=dict(t=0, b=65, l=80, r=0))
+        fig.update_xaxes(title = xaxis_title, title_standoff = 20)
+        self.plot_data(self.x_data, self.y_data, 3, fig)
 
+    def find_median_values(self, data):
+        mean_values = []
+        corresp_values = np.dstack(data)
+        corresp_values = corresp_values[0]
+        for element in corresp_values:
+            mean_values.append(np.mean(element))
+
+        return mean_values
+
+    def plot_data(self, x_data, y_data, line_width, fig):
+        palette = cycle(px.colors.sequential.RdBu)
+        for i in range(len(y_data)):
+            fig.add_trace(go.Scatter(x = x_data, y = y_data[i], line = dict(width = line_width, color = next(palette)), opacity = 0.15, showlegend=False))
+        median_values = self.find_median_values(y_data)
+        fig.add_trace(go.Scatter(x = x_data, y = median_values, line = dict(width = line_width, color = "#8B0000"), opacity = 1, showlegend=False))
+        fig.add_hline(y=15000, line_dash="dash", line_color = "#8B0000")
+        fig.add_annotation(x=8, y=15800, text='"Affordable"', showarrow=False, font = dict(size = 16, color = "#8B0000"))
+        fig.write_image("A-segment vehicle price simulation.png", width = 1000, height = 500, scale = 6)
+        #fig.show(renderer = "browser")
 
 
 def main():
-    market_share_steps = 2e5
-    market_share_values = [100/market_share_steps*i for i in range(2001)]
-    plot = Plot(market_share_values)
-
-
-
-    #print(sim1.price_array[0])
-    #print(sim1.price_array[-1])
-
-    #np.savetxt("sim1.txt", sim1.price_array)
-
+    plot = Plot()
 main()
