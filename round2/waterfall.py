@@ -11,12 +11,12 @@ def plot(fig):
       x = ["Affordable baseline", "Safety & ADAS", "CO2 comliance tech",
            "Euro 7 pollutant compliance",
            "eCall + telematics", ["End price"]],
-           y = [14000, 600, 2400, 1800, 200, 19000],
+           y = [14000, 1985, 1708, 1108, 200, 19000],
            connector = {"line": {"color" : "#203050"}},
-           text = ["14000€", "+600€", "+2400€", "+1800€", "+200€", "19000€"],
+           text = ["14000€", "+1985€", "+1708€", "+1108€", "+200€", "19000€"],
                       textposition="outside",
            decreasing = {"marker":{"color":"Maroon", "line":{"color":"red", "width":2}}},
-            increasing = {"marker":{"color":"#8b0000"}},
+            increasing = {"marker":{"color":"#8b0000", "line":{"color":"red", "width":2}}},
              totals = {"marker":{"color":"#224993", "line":{"color":"#203050", "width":3}}}), row = 1, col = 1)
     
 
@@ -25,12 +25,12 @@ def plot(fig):
       x = ["Affordable baseline", "Safety & ADAS", "CO2 comliance tech",
            "Euro 7 pollutant compliance",
            "eCall + telematics", ["End price"]],
-           y = [42222, 600, 2400, 1800, 200, 47222],
+           y = [42222, 1985, 1708, 1108, 200, 47222],
            connector = {"line": {"color" : "#203050"}},
-           text = ["42222€", "+600€", "+2400€", "+1800€", "+200€", "47222€"],
+           text = ["42222€", "+1985€", "+1708€", "+1108€", "+200€", "47222€"],
                       textposition="outside",
            decreasing = {"marker":{"color":"Maroon", "line":{"color":"red", "width":2}}},
-            increasing = {"marker":{"color":"#8b0000"}},
+            increasing = {"marker":{"color":"#8b0000", "line":{"color":"red", "width":2}}},
              totals = {"marker":{"color":"#224993", "line":{"color":"#203050", "width":3}}}), row = 1, col = 2)
     
 
@@ -50,8 +50,8 @@ def create_figure():
     fig.update_yaxes(title_text = None, row = 1, col =2, title_standoff = 20)
     fig.update_xaxes(showticklabels = False)
     #fig.update_yaxes(title_text = "", row = 1, col = 2)
-    fig.update_layout(paper_bgcolor = "#F3F4F6")
-    fig.update_layout(plot_bgcolor = "#F3F4F6")
+    fig.update_layout(paper_bgcolor = "#FFFFFF")
+    fig.update_layout(plot_bgcolor = "#FFFFFF")
     fig.update_xaxes(tickprefix = " ")
     fig.update_annotations(yshift=40)
     fig.update_annotations(font_size=25)

@@ -61,11 +61,11 @@ class Plot:
         fig = go.Figure().update_layout(template ="plotly_white", title = fig_title, title_x = 0.5, title_y = 0.94, title_font_weight = 600)
         fig.update_layout(width = 1000, height = 500)
         fig.update_layout(font_family = "Georgia", font_weight = 600, font_size = 18)
-        fig.update_layout(paper_bgcolor = "#F3F4F6")
-        fig.update_layout(plot_bgcolor = "#F3F4F6")
-        fig.update_yaxes(ticksuffix = " ", title = yaxis_title, range = [0,20000], title_standoff = 20)
+        fig.update_layout(paper_bgcolor = "#FFFFFF")
+        fig.update_layout(plot_bgcolor = "#FFFFFF")
+        fig.update_yaxes(ticksuffix = " ", title = yaxis_title, range = [0,20000], title_standoff = 20, showgrid = True, showline = False, linecolor = "#FFFFFF", zeroline = False)
         fig.update_layout(margin=dict(t=0, b=65, l=80, r=0))
-        fig.update_xaxes(title = xaxis_title, title_standoff = 20)
+        fig.update_xaxes(title = xaxis_title, title_standoff = 20, showgrid = True, showline = False, linecolor = "#FFFFFF", zeroline = False)
         self.plot_data(self.x_data, self.y_data, 3, fig)
 
     def find_median_values(self, data):
@@ -85,7 +85,7 @@ class Plot:
         fig.add_trace(go.Scatter(x = x_data, y = median_values, line = dict(width = line_width, color = "#8B0000"), opacity = 1, showlegend=False))
         fig.add_hline(y=15000, line_dash="dash", line_color = "#8B0000")
         fig.add_annotation(x=8, y=15800, text='"Affordable"', showarrow=False, font = dict(size = 16, color = "#8B0000"))
-        fig.write_image("A-segment vehicle price simulation.png", width = 1000, height = 500, scale = 6)
+        fig.write_image("A-segment vehicle price simulation.png", width = 1200, height = 500, scale = 6)
         #fig.show(renderer = "browser")
 
 

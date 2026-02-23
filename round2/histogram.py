@@ -63,11 +63,11 @@ class Plot:
 
 
     def create_figure(self, fig_title, yaxis_title, xaxis_title):
-        fig = make_subplots(rows = 2, shared_xaxes = True).update_layout(template ="plotly_white", title = fig_title, title_x = 0.5, title_y = 0.94, title_font_weight = 600)
-        fig.update_layout(width = 1000, height = 500)
+        fig = make_subplots(rows = 2, shared_xaxes = True, vertical_spacing = 0.00, row_heights=[0.3,0.7]).update_layout(template ="plotly_white", title = fig_title, title_x = 0.5, title_y = 0.94, title_font_weight = 600)
+        fig.update_layout(width = 800, height = 900)
         fig.update_layout(font_family = "Georgia", font_weight = 600, font_size = 18)
-        fig.update_layout(paper_bgcolor = "#F3F4F6")
-        fig.update_layout(plot_bgcolor = "#F3F4F6")
+        fig.update_layout(paper_bgcolor = "#FFFFFF")
+        fig.update_layout(plot_bgcolor = "#FFFFFF")
         fig.update_yaxes(ticksuffix = " ", title = yaxis_title, title_standoff = 20)
         fig.update_layout(margin=dict(t=0, b=65, l=0, r=0), showlegend = False)
         fig.update_xaxes(title = xaxis_title, title_standoff = 20, row = 2)
@@ -76,14 +76,14 @@ class Plot:
     def plot_data(self, fig, dataset):
         fig.add_trace(go.Histogram(x = dataset, marker_color = "#2A3F5F"), row = 2, col = 1)
         fig.add_trace(go.Box(x=dataset, marker_color = "#8B0000"), row = 1, col = 1)
-        fig.add_shape(type="line", x0=15000, y0=0, x1=15000, y1=400, line=dict(color="#ce1719", width=3, dash="dash"), row = 2, col = 1)
-        fig.add_annotation(x=16200, y=380, text='"Affordable"', showarrow=False, font = dict(size = 16, color = "#ce1719"), row = 2, col = 1)
-        fig.add_annotation(x=13500, y=190, text="72%", showarrow=False, font = dict(size = 37, color = "#ce1719"), row = 2, col = 1)
-        fig.add_annotation(x=15700, y=80, text="28%", showarrow=False, font = dict(size = 18, color = "#ce1719"), row = 2, col = 1)
+        fig.add_shape(type="line", x0=15000, y0=0, x1=15000, y1=400, line=dict(color="#ce1719", width=4, dash="dash"), row = 2, col = 1)
+        fig.add_annotation(x=16800, y=380, text='"Affordable"', showarrow=False, font = dict(size = 22, color = "#ce1719"), row = 2, col = 1)
+        fig.add_annotation(x=13500, y=190, text="72%", showarrow=False, font = dict(size = 50, color = "#ce1719"), row = 2, col = 1)
+        fig.add_annotation(x=15900, y=80, text="28%", showarrow=False, font = dict(size = 30, color = "#ce1719"), row = 2, col = 1)
 
         #fig.add_vline(x=15000, line_dash="dash", line_color = "#ce1719", line_width = 3)
         fig.update_yaxes(title_text = None, showticklabels=False, row = 1, col = 1)
-        fig.write_image("A-segment vehicle price simulation - Histogram.png", width = 1000, height = 500, scale = 6)
+        fig.write_image("A-segment vehicle price simulation - Histogram.png", width = 900, height = 900, scale = 6)
         #fig.show(renderer = "browser")
 
 
